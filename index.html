@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Table and Form</title>
+    <style>
+        .dec 
+        {
+            border: 5px;
+            background-color: pink;
+            text-align: center;
+        }
+        .dec:hover 
+        {
+            background-color: green;
+            color: white; 
+        }
+        .form-container 
+        {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: lightblue;
+            margin-top: 20px;
+        }
+        .form-container input[type="text"], .form-container input[type="email"], .form-container input[type="password"] 
+        {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-container input[type="submit"] 
+        {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-container input[type="submit"]:hover 
+        {
+            background-color: #45a049;
+        }
+        .bg
+        {
+            background-color: rgb(208, 199, 199);
+        }
+    </style>
+</head>
+<body class="bg">
+    <table>
+
+        <tr class="dec">
+            <th colspan="4">The Class Score Details</th>
+        </tr>
+
+        <tr class="dec">
+            <th>Sl.No</th>
+            <th>Name</th>
+            <th>Branch</th>
+            <th>Score(in %)</th>
+        </tr>
+
+        <tr class="dec">
+            <td>1</td>
+            <td>Amish Kulkarni</td>
+            <td>CS</td>
+            <td>82</td>
+        </tr>
+
+        <tr class="dec">
+            <td>2</td>
+            <td>Tanmayi Shetty</td>
+            <td>CS</td>
+            <td>78</td>
+        </tr>
+
+        <tr class="dec">
+            <td>3</td>
+            <td>Abhishek Yatagi</td>
+            <td>CS(AI)</td>
+            <td>86</td>
+        </tr>
+
+        <tr class="dec">
+            <td>4</td>
+            <td>Namrata Yellapur</td>
+            <td>CS</td>
+            <td>79</td>
+        </tr>
+
+    </table>
+
+    <div class="form-container">
+        <h2>Marks Entry Form</h2>
+        <form id="registrationForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="branch">Branch:</label>
+            <input type="text" id="branch" name="branch" required>
+
+            <label for="score">Score (in %):</label>
+            <input type="text" id="score" name="score" required>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) 
+        {
+            event.preventDefault();
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const branch = document.getElementById('branch').value;
+            const score = document.getElementById('score').value;
+
+            // Create a new table row
+            const table = document.querySelector('table');
+            const newRow = table.insertRow();
+
+            // Insert cells into the new row
+            const slNoCell = newRow.insertCell(0);
+            const nameCell = newRow.insertCell(1);
+            const branchCell = newRow.insertCell(2);
+            const scoreCell = newRow.insertCell(3);
+
+            // Add data to the cells
+            const rowCount = table.rows.length - 1; // Adjust for header row
+            slNoCell.textContent = rowCount;
+            nameCell.textContent = name;
+            branchCell.textContent = branch;
+            scoreCell.textContent = score;
+
+            // Apply the class to the new row
+            newRow.classList.add('dec');
+
+            // Clear the form
+            document.getElementById('registrationForm').reset();
+        });
+    </script>
+</body>
+</html>
